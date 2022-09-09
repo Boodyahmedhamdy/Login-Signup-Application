@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/app_nav">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_nav"
+    app:startDestination="@id/loginFragment">
 
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.simpleloginapplication.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_signupFragment"
+            app:destination="@id/signupFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.example.simpleloginapplication.SignupFragment"
+        android:label="fragment_signup"
+        tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/action_signupFragment_to_signupEmailConfirmation"
+            app:destination="@id/signupEmailConfirmation" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.simpleloginapplication.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <argument
+            android:name="user"
+            app:argType="com.example.simpleloginapplication.core.User" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupEmailConfirmation"
+        android:name="com.example.simpleloginapplication.SignupEmailConfirmation"
+        android:label="fragment_signup_email_confirmation"
+        tools:layout="@layout/fragment_signup_email_confirmation" >
+        <action
+            android:id="@+id/action_signupEmailConfirmation_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/signupFragment" />
+        <argument
+            android:name="user"
+            app:argType="com.example.simpleloginapplication.core.User" />
+    </fragment>
 </navigation>
