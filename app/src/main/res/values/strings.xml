@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">SimpleLoginApplication</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_to_your_account">Login To Your Account</string>
+    <string name="your_email">your Email</string>
+    <string name="your_password">your Password</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account_signup">don\'t have an Account Signup</string>
+    <string name="sign_up">Sign up</string>
+    <string name="don_t_have_an_account">don\'t have an Account?</string>
+    <string name="create_new_account">Create new Account</string>
+    <string name="create_account">Create Account</string>
+    <string name="type_the_confiramtion_code_set_to_your_email">type the confiramtion code set to your email</string>
+    <string name="xxx">XXX</string>
+    <string name="confirm_email">Confirm Email</string>
 </resources>
