@@ -1,10 +1,12 @@
 package com.example.simpleloginapplication
 
 import android.os.Bundle
+import android.view.*
+import androidx.core.app.ShareCompat
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.navArgs
 import com.example.simpleloginapplication.core.User
 import com.example.simpleloginapplication.databinding.FragmentHomeBinding
@@ -38,8 +40,37 @@ class HomeFragment : Fragment() {
         """.trimIndent()
         binding.mainText.text = userString
 
+        // adding share button to the top right
+        val menuHost: MenuHost = requireActivity()
+
+        menuHost.addMenuProvider(object: MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                // inflate the menu layout from menu res folder
+                menuInflater.inflate(R.menu.home_menu, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when(menuItem.itemId) {
+                    R.id.shareIcon -> {
+                        share()
+                        true
+                    }
+                    else -> false
+                }
+            }
+        },
+        viewLifecycleOwner,
+        Lifecycle.State.RESUMED)
+
     }
 
 
-
+    private fun share(){
+        startActivity(
+            ShareCompat.IntentBuilder(requireActivity())
+                .setText("i am playing with my account ${args.user.email} in the application")
+                .setType("text/plain").intent
+        )
+    }
 }
+
